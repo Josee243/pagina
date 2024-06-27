@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Gimnasio Monteros</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+</head>
+<body>
+    <div class="contenedor-header">
+        <header>
+            <h1>Gimnasio <span class="txtrojo">Monteros</span></h1>
+            <nav>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#clases">Clases</a></li>
+                    <li><a href="#entrenadores">Entrenadores</a></li>
+                    <li><a href="#form">Registrate</a></li>
+                </ul>
+            </nav>
+            <div class="redes">
+                <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+            </div>
+        </header>
+    </div>
+
+    <section id="inicio" class="inicio">
+        <div class="info">
+            <h2>Bienvenido a <span class="txtrojo">Gimnasio</span> Monteros</h2>
+            <p>¡Descubre tu potencial!</p>
+            <a href="#clases" class="btn-mas">
+                <i class="fa-solid fa-circle-chevron-down"></i>
+            </a>
+        </div>
+        <div class="opciones">
+            <div class="opcion">CROSFIT</div>
+            <div class="opcion">PILATES</div>
+            <div class="opcion">MUSCULACIÓN</div>
+            <div class="opcion">FUNCIONAL</div>
+            <div class="opcion">CAMA SOLAR</div>
+        </div>
+    </section>
+
+    <section id="clases" class="clases">
+        <div class="nosotros">
+            <div class="info">
+                <center><h2>Nuestras Clases</h2></center>
+                <center><p>Ofrecemos diversas clases de fitness, como aeróbicos, yoga, spinning y mucho más. Encuentra la clase que se adapte a tus necesidades.</p>
+                <img src="imagenes/istockphoto-622918790-612x612.jpg" alt="Clases en Gimnasio Fitness"></center>
+                <div id="app-clases">
+                    <ul>
+                        <li v-for="clase in clases" :key="clase.id">
+                            <strong>{{ clase.nombre }}</strong> - {{ clase.hora }}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="entrenadores" class="entrenadores">
+        <div class="nosotros">
+            <div class="info">
+            <center><h2>Nuestros Entrenadores</h2></center>
+            <center><p>Nuestros entrenadores altamente capacitados te ayudarán a alcanzar tus objetivos. Conoce a nuestro equipo de expertos.</p>
+            <img src="imagenes/istockphoto-1309886139-612x612.jpg" alt="Entrenadores de Gimnasio Fitness"></center>
+            <div id="app-entrenadores">
+                <ul>
+                    <li v-for="entrenador in entrenadores" :key="entrenador.id" class="Fit">
+                        <strong>{{ entrenador.nombre }}</strong> - {{ entrenador.especialidad }}
+                    </li>
+                </ul>
+               </div>
+            </div>
+        </div>
+    </section>
+    <section id="form" class="form">
+        <div class="infor">
+            <center><h2>REGISTRATE</h2></center>
+            <div id="form-container"></div>
+
+    <script>
+        // Crear el formulario
+        const form = document.createElement('form');
+        form.id = 'registrationForm';
+
+        // Crear el campo de entrada para el nombre
+        const nameLabel = document.createElement('label');
+        nameLabel.setAttribute('for', 'name');
+        nameLabel.textContent = 'Nombre completo: ';
+        const nameInput = document.createElement('input');
+        nameInput.type = 'text';
+        nameInput.id = 'name';
+        nameInput.name = 'name';
+        nameInput.required = true;
+
+        // Crear el campo de entrada para la edad
+        const ageLabel = document.createElement('label');
+        ageLabel.setAttribute('for', 'age');
+        ageLabel.textContent = 'Edad: ';
+        const ageInput = document.createElement('input');
+        ageInput.type = 'number';
+        ageInput.id = 'age';
+        ageInput.name = 'age';
+        ageInput.required = true;
+
+        // Crear el campo de selección para el tipo de membresía
+        const membershipLabel = document.createElement('label');
+        membershipLabel.setAttribute('for', 'membership');
+        membershipLabel.textContent = 'Tipo de membresía: ';
+        const membershipSelect = document.createElement('select');
+        membershipSelect.id = 'membership';
+        membershipSelect.name = 'membership';
+        membershipSelect.required = true;
+        
+        // Opciones del select
+        const option1 = document.createElement('option');
+        option1.value = 'Diario';
+        option1.textContent = 'Diario'; 
+
+        const option2 = document.createElement('option');
+        option2.value = 'Semanal';
+        option2.textContent = 'Semanal';
+
+        const option3 = document.createElement('option');
+        option3.value = 'Mensual';
+        option3.textContent = 'Mensual';
+        
+        const option4 = document.createElement('option');
+        option4.value = 'Anual';
+        option4.textContent = 'Anual';
+        
+        membershipSelect.appendChild(option1);
+        membershipSelect.appendChild(option2);
+        membershipSelect.appendChild(option3);
+        membershipSelect.appendChild(option4);
+
+        // Crear el campo de entrada para el correo electrónico
+        const emailLabel = document.createElement('label');
+        emailLabel.setAttribute('for', 'email');
+        emailLabel.textContent = 'Correo electrónico: ';
+        const emailInput = document.createElement('input');
+        emailInput.type = 'email';
+        emailInput.id = 'email';
+        emailInput.name = 'email';
+        emailInput.required = true;
+
+        // Crear el botón de envío
+        const submitButton = document.createElement('button');
+        submitButton.type = 'submit';
+        submitButton.textContent = 'Enviar';
+
+        // Agregar los elementos al formulario
+        form.appendChild(nameLabel);
+        form.appendChild(nameInput);
+        form.appendChild(document.createElement('br'));
+
+        form.appendChild(ageLabel);
+        form.appendChild(ageInput);
+        form.appendChild(document.createElement('br'));
+
+        form.appendChild(membershipLabel);
+        form.appendChild(membershipSelect);
+        form.appendChild(document.createElement('br'));
+
+        form.appendChild(emailLabel);
+        form.appendChild(emailInput);
+        form.appendChild(document.createElement('br'));
+
+        form.appendChild(submitButton);
+
+        // Agregar el formulario al contenedor en el cuerpo del documento
+        document.getElementById('form-container').appendChild(form);
+
+        // Agregar un evento para manejar el envío del formulario
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Evitar el envío del formulario para demostrar la funcionalidad
+
+            const name = nameInput.value;
+            const age = ageInput.value;
+            const membership = membershipSelect.value;
+            const email = emailInput.value;
+
+            // Aca se envian los datos a la consola o un servidor
+            console.log('Nombre:', name);
+            console.log('Edad:', age);
+            console.log('Membresía:', membership);
+            console.log('Correo electrónico:', email);
+        });
+    </script>
+        </div>
+    </section>
+<section id="testimonios" class="testimonios">
+    <div id="testimonials">
+        <center><h1>Testimonios</h1></center>
+        <div id="testimonialsList"></div>
+      </div>
+    
+      <!-- Load JavaScript file -->
+      <script src="script.js"></script>
+    </section>
+
+    <footer id="contacto" class="contacto">
+        <h2>Contacto</h2>
+        <p>Contáctanos para obtener más información sobre nuestros servicios y horarios de clase.</p>
+        <address>
+            Dirección: Colón y Alberdi, Monteros, Tucumán<br>
+            Teléfono: (381) 453-7790<br>
+            Correo electrónico: info@gimnasiofitness.com
+        </address>
+    </footer>
+
+    <script>
+        new Vue({
+            el: '#app-clases',
+            data: {
+                clases: [
+                    { id: 1, nombre: 'Yoga', hora: '10:00 AM' },
+                    { id: 2, nombre: 'Pilates', hora: '11:00 AM' },
+                    { id: 3, nombre: 'Zumba', hora: '12:00 PM' },
+                    { id: 4, nombre: 'Crossfit', hora: '01:00 PM' }
+                ]
+            },
+        });
+
+        new Vue({
+            el: '#app-entrenadores',
+            data: {
+                entrenadores: [
+                    { id: 1, nombre: 'Carlos', especialidad: 'Yoga' },
+                    { id: 2, nombre: 'María', especialidad: 'Pilates' },
+                    { id: 3, nombre: 'José', especialidad: 'Zumba' },
+                    { id: 4, nombre: 'Ana', especialidad: 'Crossfit' }
+                ]
+            },
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+{
+    "Testimonios": [
+      {
+        "id": 1,
+        "nombre": "María Gómez",
+        "ciudad": "Monteros",
+        "comentario": "Excelente gimnasio, con clases variadas y buen ambiente. ¡Muy recomendable!",
+        "fecha": "2024-06-25"
+      },
+      {
+        "id": 2,
+        "nombre": "Juan Pérez",
+        "ciudad": "Monteros",
+        "comentario": "Llevo años entrenando aquí y siempre he recibido un trato excelente. Instalaciones de primera.",
+        "fecha": "2024-03-26"
+      },
+      {
+        "id": 3,
+        "nombre": "Ana Martínez",
+        "ciudad": "Monteros",
+        "comentario": "Me encanta la variedad de clases y lo bien equipado que está el gimnasio. ¡Volveré sin duda!",
+        "fecha": "2023-09-25"
+      }
+    ]
+  }
+  
